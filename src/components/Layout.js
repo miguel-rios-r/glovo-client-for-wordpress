@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Navbar from '../components/Navbar'
+import Breadcrumb from '../components/Breadcrumb'
 
 // class Layout extends React.Component {
 //   render(){
@@ -14,6 +15,7 @@ const Layout = (props) => {
   return(
     <div>
       <Navbar/>
+      <Breadcrumb title="Inicio"/>
       {props.children}
     </div>
   )
