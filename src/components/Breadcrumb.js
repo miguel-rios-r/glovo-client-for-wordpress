@@ -4,8 +4,8 @@ const Breadcrumb = (props) => {
   return (
     <div>
       <div>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active">{props.title}</li>
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item active">{props.title}</li>
         </ol>
       </div>
     </div>

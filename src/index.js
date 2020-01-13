@@ -2,5 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import reduxThunk from 'redux-thunk'
+
+import reducers from './reducers'
+
+const store = createStore(
+  reducers, // All reducers
+  {}, // InitState
+  applyMiddleware(reduxThunk)
+
+);
+
+ReactDOM.render(
+  <Provider store={ store }>
+    <App />
+  </Provider>, document.getElementById('root')
+);
 

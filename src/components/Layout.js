@@ -15,7 +15,7 @@ const Layout = (props) => {
   return(
     <div>
       <Navbar/>
-      <Breadcrumb title="Inicio"/>
+      <Breadcrumb title="Usuarios"/>
       {props.children}
     </div>
   )
