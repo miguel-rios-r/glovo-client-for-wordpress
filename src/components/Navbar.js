@@ -14,13 +14,7 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarColor02">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/">Inicio</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/users">Usuarios</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/">About</Link>
+            <Link className="nav-link" to="/users">Salir</Link>
           </li>
         </ul>
       </div>
