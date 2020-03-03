@@ -1,12 +1,16 @@
 import React from 'react';
 
 import DataList from '../components/DataList'
+import LoginForm from '../components/LoginForm';
 
 class Inicio extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
+      currentUser: null,
       loading: false,
       error: null,
       data: []
@@ -30,27 +34,6 @@ class Inicio extends React.Component {
             location: 'Cotocollao',
             status: 'En cola'
           },
-          {
-            id: '2',
-            user_name: 'Jacob Murillo',
-            city: 'Quito',
-            location: 'Conocoto',
-            status: 'En cola'
-          },
-          {
-            id: '3',
-            user_name: 'José Delgado',
-            city: 'Quito',
-            location: 'Cotocollao',
-            status: 'En cola'
-          },
-          {
-            id: '4',
-            user_name: 'Jacob Murillo',
-            city: 'Quito',
-            location: 'Conocoto',
-            status: 'En cola'
-          }
         ]
       })
     } catch (error) {
@@ -58,7 +41,43 @@ class Inicio extends React.Component {
     }
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    if ( this.state.value === "nu%nat" ) {
+      this.setState({
+        currentUser: 'nunaby'
+      })
+      alert('Logueado correctamente');
+    } else {
+      alert('Contraseña incorrecta');
+    }
+    event.preventDefault();
+  }
+
   render(){
+
+    if ( this.state.currentUser === null ) {
+      return (
+        <div className = "container">
+          <div className = "row">
+            <div className = "col-md-6">
+              <form onSubmit={this.handleSubmit}>
+                  <div className = "form-group">
+                    <label for = "password_field">
+                      Ingrese su contraeña
+                    </label>
+                    <input type="password" value={this.state.value} onChange={this.handleChange} class="form-control" id="password_field" placeholder="Contraseña" />
+                  </div>
+                <input type="submit" value="Ingresar" className = "btn btn-primary" />
+              </form>
+            </div>
+          </div>
+        </div>
+      )
+    }
 
     if ( this.state.loading ) {
       return <p>Cargando</p>
