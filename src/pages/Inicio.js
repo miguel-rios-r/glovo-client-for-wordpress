@@ -1,7 +1,8 @@
 import React from 'react';
 
 import DataList from '../components/DataList'
-import LoginForm from '../components/LoginForm';
+import Navbar from '../components/Navbar'
+import Breadcrumb from '../components/Breadcrumb'
 
 class Inicio extends React.Component {
 
@@ -61,21 +62,25 @@ class Inicio extends React.Component {
 
     if ( this.state.currentUser === null ) {
       return (
-        <div className = "container">
-          <div className = "row">
-            <div className = "col-md-6">
-              <form onSubmit={this.handleSubmit}>
-                  <div className = "form-group">
-                    <label for = "password_field">
-                      Ingrese su contraeña
-                    </label>
-                    <input type="password" value={this.state.value} onChange={this.handleChange} class="form-control" id="password_field" placeholder="Contraseña" />
-                  </div>
-                <input type="submit" value="Ingresar" className = "btn btn-primary" />
-              </form>
+        <React.Fragment>
+          <Navbar logged = {false}/>
+          <Breadcrumb title="Iniciar sesión"/>
+          <div className = "container">
+            <div className = "row">
+              <div className = "col-md-6">
+                <form onSubmit={this.handleSubmit}>
+                    <div className = "form-group">
+                      <label for = "password_field">
+                        Ingrese su contraeña
+                      </label>
+                      <input type="password" value={this.state.value} onChange={this.handleChange} class="form-control" id="password_field" placeholder="Contraseña" />
+                    </div>
+                  <input type="submit" value="Ingresar" className = "btn btn-primary" />
+                </form>
+              </div>
             </div>
           </div>
-        </div>
+        </React.Fragment>
       )
     }
 
@@ -84,9 +89,13 @@ class Inicio extends React.Component {
     }
 
     return(
-      <div className="container-fluid">
-        <DataList row_type = "table-light" render_data = {this.state.data} ></DataList>
-      </div>
+      <React.Fragment>
+        <Navbar logged = {true} />
+        <Breadcrumb title="Nunaby Natural"/>
+        <div className="container-fluid">
+          <DataList row_type = "table-light" render_data = {this.state.data} ></DataList>
+        </div>
+      </React.Fragment>
     )
   }
 }
